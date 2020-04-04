@@ -18,7 +18,7 @@ module.exports = {
             .addField("Version", bot.version)
             .addField("Library", `Discord.js v${Discord.version}`)
             .addField("Node.js", `${process.version}`)
-            .setFooter("© 2019 StrangeAlmond#0001", bot.user.displayAvatarURL)
+            .setFooter("© 2020 StrangeAlmond#0001", bot.user.displayAvatarURL)
             .setTimestamp();
         message.channel.send(statsEmbed);
     },
