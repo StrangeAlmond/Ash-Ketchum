@@ -1,0 +1,19 @@
+{
+  "name": "ash-ketchum-rewrite",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bot.js",
+  "dependencies": {
+    "better-sqlite-pool": "^0.2.2",
+    "discord.js": "^11.5.1",
+    "enmap": "^5.1.2",
+    "moment-timezone": "^0.5.26",
+    "numeral": "^2.0.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
