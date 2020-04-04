@@ -18,7 +18,7 @@ module.exports = async bot => {
     bot.user.setActivity("Just Started, Sorry for the downtime!");
 
     setTimeout(async () => {
-        bot.user.setActivity(`!help | Version ${botconfig.version}`);
+        bot.user.setActivity(`${bot.prefix}help | Version ${botconfig.version}`);
     }, 300000);
 
     console.log(`Bot is logged in!\nBot was ready at: ${moment().tz("America/Los_Angeles").format("LLLL")}\nUser: ${bot.user.username}\nGuilds: ${bot.guilds.size}\nMembers: ${bot.users.size}\nChannels: ${bot.channels.size}\nPrefix: ${prefix}\nCommands Loaded: ${bot.commands.size}\nBot is logged in!`);
