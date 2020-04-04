@@ -1,4 +1,3 @@
-const prefix = require("../botconfig.json").prefix;
 const moment = require("moment-timezone");
 
 module.exports = async (bot, message) => {
@@ -11,7 +10,7 @@ module.exports = async (bot, message) => {
         lastLevelUp: Date.now()
     });
 
-    const args = message.content.slice(prefix.length).toLowerCase().split(/ +/);
+    const args = message.content.slice(bot.prefix.length).toLowerCase().split(/ +/);
     const commandName = args.shift().toLowerCase();
     const command = bot.commands.get(commandName) || bot.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
    
