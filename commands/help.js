@@ -8,7 +8,7 @@ module.exports = {
         const ownerCommands = ["eval", "restart", "reload"];
         const command = bot.commands.filter(c => !ownerCommands.includes(c.name)).map(c => `**${bot.prefix}${c.name}** - ${c.description}`).join("\n");
 
-        const embed = new Discord.RichEmbed()
+        const embed = new Discord.MessageEmbed()
             .setAuthor(`${bot.user.username}'s Commands`, bot.user.displayAvatarURL)
             .setDescription(command)
             .setColor(message.member.displayHexColor)

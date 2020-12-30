@@ -9,8 +9,8 @@ module.exports = {
         const uptime = `${uptimeObject.hours}h, ${uptimeObject.minutes}m, ${uptimeObject.seconds}s`;
         const memoryUsage = (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2);
 
-        // Create a RichEmbed for it and send it
-        const statsEmbed = new Discord.RichEmbed()
+        // Create a MessageEmbed for it and send it
+        const statsEmbed = new Discord.MessageEmbed()
             .setColor(message.member.displayHexColor)
             .setThumbnail(bot.user.displayAvatarURL)
             .addField("Uptime", `${uptime}`)

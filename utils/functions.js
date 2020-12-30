@@ -4,7 +4,7 @@ module.exports = {
         return true;
     },
 
-    getLevelFromNickname(nickname) {
+    getLvlFromNickname(nickname) {
         if (!this.hasLevelInNickname(nickname)) return null;
         return nickname.toLowerCase().match(/\(l[0-9]{1,2}\)$/g)[0].toUpperCase();
     },
@@ -17,7 +17,7 @@ module.exports = {
 
         let object = {};
 
-        if(intOnly) {
+        if (intOnly) {
             object = {
                 ms,
                 seconds: parseInt(seconds),
@@ -26,14 +26,14 @@ module.exports = {
                 days: parseInt(days)
             };
         } else {
-        object = {
-            ms,
-            seconds,
-            hours,
-            days
-        };
+            object = {
+                ms,
+                seconds,
+                hours,
+                days
+            };
+        }
+
+        return object;
     }
-    
-    return object;
-}
 };

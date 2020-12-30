@@ -25,13 +25,13 @@ module.exports = {
         bot.userInfo.set(message.author.id, Date.now(), "lastLevelUp");
         bot.userInfo.set(message.author.id, xp, "xp");
 
-        const guilds = bot.guilds.filter(g => g.members.some(m => m.id == message.author.id));
+        const guilds = bot.guilds.cache.filter(g => g.members.cache.some(m => m.id == message.author.id));
 
         guilds.forEach(guild => {
-            const user = guild.members.find(m => m.id == message.author.id);
+            const user = guild.members.cache.find(m => m.id == message.author.id);
 
             if (bot.functions.hasLevelInNickname(user.displayName)) {
-                const newNickname = user.displayName.replace(bot.functions.getLevelFromNickname(user.displayName), `(L${level})`);
+                const newNickname = user.displayName.replace(bot.functions.getLvlFromNickname(user.displayName), `(L${level})`);
                 user.setNickname(newNickname);
             } else {
                 user.setNickname(`${user.displayName} (L${level})`);

@@ -4,6 +4,7 @@ const botconfig = require("./botconfig.json");
 const fs = require("fs");
 
 const bot = new Discord.Client({
+    disableMentions: "everyone",
     disabledEvents: ["TYPING_START"]
 });
 

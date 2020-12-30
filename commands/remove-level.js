@@ -5,9 +5,11 @@ module.exports = {
     description: "Remove your level from your nickname.",
     aliases: ["levelremove", "removelevel", "remove_level"],
     async execute(message, args, bot) {
-        if (!bot.functions.hasLevelInNickname(message.member.displayName)) return message.channel.send("Your nickname does not currently contain your level.");
+        if (!bot.functions.hasLevelInNickname(message.member.displayName)) {
+            return message.channel.send("Your nickname does not currently contain your level.");
+        }
 
-        const newNickname = message.member.displayName.replace(bot.functions.getLevelFromNickname(message.member.displayName), "");
+        const newNickname = message.member.displayName.replace(bot.functions.getLvlFromNickname(message.member.displayName), "");
         message.member.setNickname(newNickname);
 
         message.channel.send("Got it! I have removed your level from your nickname.");
