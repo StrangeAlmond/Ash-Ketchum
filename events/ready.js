@@ -21,5 +21,5 @@ module.exports = async bot => {
         bot.user.setActivity(`${bot.prefix}help | Version ${botconfig.version}`);
     }, 300000);
 
-    console.log(`Bot is logged in!\nBot was ready at: ${moment().tz("America/Los_Angeles").format("LLLL")}\nUser: ${bot.user.username}\nGuilds: ${bot.guilds.size}\nMembers: ${bot.users.size}\nChannels: ${bot.channels.size}\nPrefix: ${prefix}\nCommands Loaded: ${bot.commands.size}\nBot is logged in!`);
+    console.log(`Bot is logged in!\nBot was ready at: ${moment().tz("America/Los_Angeles").format("LLLL")}\nUser: ${bot.user.username}\nGuilds: ${bot.guilds.cache.size}\nMembers: ${bot.users.cache.size}\nChannels: ${bot.channels.cache.size}\nPrefix: ${prefix}\nCommands Loaded: ${bot.commands.size}\nBot is logged in!`);
 };
