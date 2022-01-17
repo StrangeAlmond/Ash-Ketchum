@@ -5,7 +5,8 @@ const fs = require("fs");
 
 const bot = new Discord.Client({
     disableMentions: "everyone",
-    disabledEvents: ["TYPING_START"]
+    disabledEvents: ["TYPING_START"],
+    intents: [Discord.Intents.FLAGS.GUILD_MESSAGES]
 });
 
 bot.userInfo = new Enmap({
