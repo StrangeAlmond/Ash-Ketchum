@@ -17,6 +17,12 @@ module.exports = {
     const props = require(`./${commandName}.js`);
 
     bot.commands.set(commandName, props);
-    message.reply(`The command !${commandName} has been reloaded.`).then(msg => msg.delete(5000) && message.delete(5000));
+    message.reply(`The command !${commandName} has been reloaded.`)
+      .then(msg => {
+        setTimeout(() => {
+          msg.delete()
+          message.delete()
+        }, 5000);
+      });
   },
 };

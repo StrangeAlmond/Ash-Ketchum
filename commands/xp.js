@@ -6,14 +6,14 @@ module.exports = {
     description: "Set your xp.",
     aliases: ["setxp", "set-xp", "set_xp", "xpset", "xp-set", "xp_set"],
     async execute(message, args, bot) {
-        if (!args[0]) return message.channel.send("Specify the level you'd like to set!");
+        if (!args[0]) return message.channel.send("Specify the xp you'd like to set!");
 
         const xp = numeral(args[0])._value;
 
         if (isNaN(xp) || xp < 1) return message.channel.send("Invalid xp.");
 
         const userInfo = bot.userInfo.get(message.author.id);
-        if (xp == userInfo.level) return message.channel.send(`You have already set your xp to **${xp}**`);
+        if (xp == userInfo.xp) return message.channel.send(`You have already set your xp to **${xp}**`);
 
         let level = 0;
 
@@ -28,16 +28,16 @@ module.exports = {
         const guilds = bot.guilds.cache.filter(g => g.members.cache.some(m => m.id == message.author.id));
 
         guilds.forEach(guild => {
-            const user = guild.members.cache.find(m => m.id == message.author.id);
+            const member = guild.members.cache.find(m => m.id == message.author.id);
 
-            if (bot.functions.hasLevelInNickname(user.displayName)) {
-                const newNickname = user.displayName.replace(bot.functions.getLvlFromNickname(user.displayName), `(L${level})`);
-                user.setNickname(newNickname);
+            if (bot.functions.hasLevelInNickname(member.displayName)) {
+                const newNickname = member.displayName.replace(bot.functions.getLvlFromNickname(member.displayName), `(L${level})`);
+                member.setNickname(newNickname).catch(console.error)
             } else {
-                user.setNickname(`${user.displayName} (L${level})`);
+                member.setNickname(`${member.displayName} (L${level})`).catch(console.error);
             }
         });
 
-        message.channel.send(`Got it! I have set your xp to **${numeral(xp).format("0,0")}** and your level to **${level}**.`);
+        message.reply(`Got it! I have set your xp to **${numeral(xp).format("0,0")}** and your level to **${level}**.`);
     },
 };

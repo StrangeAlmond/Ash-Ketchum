@@ -7,12 +7,18 @@ module.exports = {
     const uptimeObject = bot.functions.botUptime(bot.uptime, true);
     const uptimeMsg = `${uptimeObject.days}d, ${uptimeObject.hours}h, ${uptimeObject.minutes}m, ${uptimeObject.seconds}s`;
 
-    const uptime = new Discord.MessageEmbed()
-      .setAuthor("Uptime")
+    const uptimeEmbed = new Discord.MessageEmbed()
+      .setTitle("Uptime")
       .setColor(message.member.displayHexColor)
       .setDescription(uptimeMsg)
-      .setFooter(bot.user.username, bot.user.displayAvatarURL)
+      .setFooter({
+        text: bot.user.username,
+        iconURL: bot.user.displayAvatarURL()
+      })
       .setTimestamp();
-    message.channel.send(uptime);
+
+    message.channel.send({
+      embeds: [uptimeEmbed]
+    });
   },
 };

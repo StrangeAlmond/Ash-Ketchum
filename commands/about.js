@@ -12,14 +12,19 @@ module.exports = {
         // Create a MessageEmbed for it and send it
         const statsEmbed = new Discord.MessageEmbed()
             .setColor(message.member.displayHexColor)
-            .setThumbnail(bot.user.displayAvatarURL)
+            .setThumbnail(bot.user.displayAvatarURL())
             .addField("Uptime", `${uptime}`)
             .addField("Memory Usage", `${memoryUsage} MB`)
-            .addField("Version", bot.version)
+            .addField("Version", `bot.version`)
             .addField("Library", `Discord.js v${Discord.version}`)
             .addField("Node.js", `${process.version}`)
-            .setFooter("© 2020 StrangeAlmond#0001", bot.user.displayAvatarURL)
+            .setFooter({
+                text: "© 2020 StrangeAlmond#0001",
+                iconURL: bot.user.displayAvatarURL()
+            })
             .setTimestamp();
-        message.channel.send(statsEmbed);
+        message.channel.send({
+            embeds: [statsEmbed]
+        });
     },
 };

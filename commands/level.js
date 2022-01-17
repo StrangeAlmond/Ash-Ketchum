@@ -28,9 +28,9 @@ module.exports = {
 
             if (bot.functions.hasLevelInNickname(user.displayName)) {
                 const newNickname = user.displayName.replace(bot.functions.getLvlFromNickname(user.displayName), `(L${level})`);
-                user.setNickname(newNickname);
+                user.setNickname(newNickname).catch(console.error);
             } else {
-                user.setNickname(`${user.displayName} (L${level})`);
+                user.setNickname(`${user.displayName} (L${level})`).catch(console.error)
             }
         });
 

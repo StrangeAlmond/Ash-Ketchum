@@ -1,5 +1,3 @@
-const Discord = require("discord.js");
-
 module.exports = {
     name: "remove-level",
     description: "Remove your level from your nickname.",
@@ -10,8 +8,8 @@ module.exports = {
         }
 
         const newNickname = message.member.displayName.replace(bot.functions.getLvlFromNickname(message.member.displayName), "");
-        message.member.setNickname(newNickname);
+        message.member.setNickname(newNickname).catch(console.error);
 
-        message.channel.send("Got it! I have removed your level from your nickname.");
+        message.channel.reply("Got it! I have removed your level from your nickname.");
     },
 };

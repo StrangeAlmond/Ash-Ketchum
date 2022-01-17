@@ -6,14 +6,22 @@ module.exports = {
     aliases: ["commands"],
     async execute(message, args, bot) {
         const ownerCommands = ["eval", "restart", "reload"];
-        const command = bot.commands.filter(c => !ownerCommands.includes(c.name)).map(c => `**${bot.prefix}${c.name}** - ${c.description}`).join("\n");
+        const command = bot.commands
+            .filter(c => !ownerCommands.includes(c.name))
+            .map(c => `**${bot.prefix}${c.name}** - ${c.description}`)
+            .join("\n");
 
-        const embed = new Discord.MessageEmbed()
-            .setAuthor(`${bot.user.username}'s Commands`, bot.user.displayAvatarURL)
+        const helpEmbed = new Discord.MessageEmbed()
+            .setAuthor({
+                name: `${bot.user.username}'s Commands`,
+                iconURL: bot.user.displayAvatarURL()
+            })
             .setDescription(command)
             .setColor(message.member.displayHexColor)
             .setTimestamp();
 
-        message.channel.send(embed);
+        message.channel.send({
+            embeds: [helpEmbed]
+        });
     },
 };
