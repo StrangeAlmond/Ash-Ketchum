@@ -1,19 +1,25 @@
 {
-  "name": "ash-ketchum-rewrite",
+  "name": "ash-ketchum",
   "version": "1.0.0",
   "description": "",
   "main": "bot.js",
-  "dependencies": {
-    "better-sqlite-pool": "^0.2.2",
-    "discord.js": "^12.5.1",
-    "enmap": "^5.1.2",
-    "moment-timezone": "^0.5.26",
-    "numeral": "^2.0.6"
-  },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StrangeAlmond/Ash-Ketchum.git"
+  },
+  "author": "StrangeAlmond",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/StrangeAlmond/Ash-Ketchum/issues"
+  },
+  "homepage": "https://github.com/StrangeAlmond/Ash-Ketchum#readme",
+  "dependencies": {
+    "discord.js": "^13.6.0",
+    "enmap": "^5.8.7",
+    "moment-timezone": "^0.5.34",
+    "numeral": "^2.0.6"
+  }
 }
