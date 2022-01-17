@@ -4,9 +4,11 @@ const botconfig = require("./botconfig.json");
 const fs = require("fs");
 
 const bot = new Discord.Client({
-    disableMentions: "everyone",
-    disabledEvents: ["TYPING_START"],
-    intents: [Discord.Intents.FLAGS.GUILD_MESSAGES]
+    intents: [
+        "GUILDS",
+        "GUILD_MESSAGES",
+        "GUILD_MEMBERS"
+    ]
 });
 
 bot.userInfo = new Enmap({
@@ -30,6 +32,8 @@ for (const file of commandFiles) {
 for (const file of eventFiles) {
     const event = require(`./events/${file}`);
     const eventName = file.split(".")[0];
+
+    console.log(eventName)
 
     bot.on(eventName, event.bind(null, bot));
     delete require.cache[require.resolve(`./events/${file}`)];
